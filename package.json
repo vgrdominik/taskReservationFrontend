@@ -2,7 +2,7 @@
   "name": "task-reservation",
   "version": "0.0.1",
   "description": "Manager para reservar tareas.",
-  "author": "Dan",
+  "author": "iamvalentigamez",
   "private": true,
   "scripts": {
     "dev": "nuxt",

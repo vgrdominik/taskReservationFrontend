@@ -2,6 +2,12 @@
   <v-btn v-if="type==='outlined'" outlined v-on="$listeners" v-bind="$attrs">
     <slot />
   </v-btn>
+  <v-btn v-else-if="type==='primary'" color="primary" v-on="$listeners" v-bind="$attrs">
+    <slot />
+  </v-btn>
+  <v-btn v-else-if="type==='accent'" color="accent" class="primary--text" v-on="$listeners" v-bind="$attrs">
+    <slot />
+  </v-btn>
   <v-btn v-else-if="type === 'text'" text v-on="$listeners" v-bind="$attrs">
     <slot />
   </v-btn>
@@ -26,7 +32,7 @@ export default {
       default: 'outlined',
       validator: function (value) {
         // The value must match one of these strings
-        return ['text', 'outlined', 'icon', 'empty'].indexOf(value) !== -1
+        return ['text', 'outlined', 'primary', 'accent', 'icon', 'empty'].indexOf(value) !== -1
       }
     },
     'icon': {

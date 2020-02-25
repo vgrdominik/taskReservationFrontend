@@ -5,7 +5,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'TaskReservation',
+    title: 'Reservar tareas - Programador Valentí Gàmez',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -43,13 +43,17 @@ export default {
       family: 'Roboto'
     },
     theme: {
-      primary: '#54B5EE',
-      secondary: '#424242',
-      accent: '#BCE0FD',
-      error: '#FF5252',
-      info: '#2196F3',
-      success: '#4CAF50',
-      warning: '#FFC107',
+      themes: {
+        light: {
+          primary: '#54B5EE',
+          secondary: '#424242',
+          accent: '#BCE0FD',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107',
+        }
+      }
     },
   },
   /*
@@ -82,34 +86,6 @@ export default {
   axios: {
     baseURL:  'http://127.0.0.1:8000/',//'{BASE_URL_OF API}/',
     withCredentials: true
-  },
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: '/login',
-            method: 'post',
-            withCredentials: true,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json'
-            } },
-          user: {
-            url: '/api/user',
-            method: 'get',
-            propertyName: false,
-            withCredentials: true,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json'
-            }
-          }
-        },
-        tokenRequired: false,
-        tokenType: false
-      }
-    }
   },
 
   /*

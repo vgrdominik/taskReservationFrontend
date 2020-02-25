@@ -26,7 +26,7 @@
           >
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title>
+                <v-list-item-title class="primary--text">
                   {{ item.text }}
                 </v-list-item-title>
               </v-list-item-content>
@@ -37,10 +37,10 @@
               link
             >
               <v-list-item-action v-if="child.icon">
-                <CtIcon :icon="child.icon" />
+                <CtIcon :icon="child.icon" class="primary--text" />
               </v-list-item-action>
               <v-list-item-content>
-                <v-list-item-title>
+                <v-list-item-title class="primary--text">
                   {{ child.text }}
                 </v-list-item-title>
               </v-list-item-content>
@@ -52,10 +52,10 @@
             link
           >
             <v-list-item-action>
-              <CtIcon :icon="item.icon" />
+              <CtIcon :icon="item.icon" class="primary--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>
+              <v-list-item-title class="primary--text">
                 {{ item.text }}
               </v-list-item-title>
             </v-list-item-content>
@@ -124,9 +124,7 @@
 </template>
 
 <script>
-  import CtBtn from "../components/CtBtn";
   export default {
-    components: {CtBtn},
     props: {
       source: String,
     },
