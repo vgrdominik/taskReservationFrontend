@@ -99,7 +99,7 @@
           Registro gratuito
         </CtBtn>
       </template>
-      <CtBtn type="icon" :icon="['fas', 'bell']" />
+      <CtBtn type="icon" :icon="['fas', 'bell']" to="/notificaciones" />
     </v-app-bar>
     <v-content>
       <v-container

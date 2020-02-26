@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   data(){
@@ -48,13 +48,12 @@ export default {
   methods: {
     forgot(){
       this.$axios.post('/api/forgotReset', this.forgotData)
-        .then((response) => (response.data === 'Password reset') ? this.$router.push('/login') : this.updateServerMessage(response.data))
-        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.updateServerMessage('Datos inválidos.') : this.updateServerMessage(error.response.data.message) : this.updateServerMessage('Error.'))
+        .then((response) => (response.data === 'Password reset') ? this.$router.push('/login') : this.setServerMessage(response.data))
+        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.setServerMessage('Datos inválidos.') : this.setServerMessage(error.response.data.message) : this.setServerMessage('Error.'))
     },
 
-    ...mapMutations({
-      updateServerMessage: 'serverMessage/updateServerMessage',
-      updateToken: 'user/updateToken',
+    ...mapActions({
+      setServerMessage: 'serverMessage/setServerMessage',
     }),
   }
 }

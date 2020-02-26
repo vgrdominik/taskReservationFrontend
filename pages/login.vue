@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   data(){
@@ -60,17 +60,14 @@ export default {
 
     login(){
       this.$axios.post('/api/login', this.signInData)
-        .then((response) => (response.data.token) ? this.afterLogin(response) : this.updateServerMessage(response.data))
-        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.updateServerMessage('Datos inválidos.') : this.updateServerMessage(error.response.data.message) : this.updateServerMessage('Error.'))
+        .then((response) => (response.data.token) ? this.afterLogin(response) : this.setServerMessage(response.data))
+        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.setServerMessage('Datos inválidos.') : this.setServerMessage(error.response.data.message) : this.setServerMessage('Error.'))
     },
 
     ...mapActions({
       setToken: 'user/setToken',
       fetchUser: 'user/fetchUser',
-    }),
-
-    ...mapMutations({
-      updateServerMessage: 'serverMessage/updateServerMessage',
+      setServerMessage: 'serverMessage/setServerMessage',
     }),
   }
 }

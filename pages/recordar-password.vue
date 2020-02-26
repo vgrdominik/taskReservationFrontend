@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   data(){
@@ -40,12 +40,12 @@ export default {
   methods: {
     forgot(){
       this.$axios.post('/api/forgotSendResetLinkEmail', this.forgotData)
-        .then((response) => (response.data === 'Reset link sent') ? this.$router.push('/recordar-password-fin') : this.updateServerMessage(response.data))
-        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.updateServerMessage('Datos inválidos.') : this.updateServerMessage(error.response.data.message) : this.updateServerMessage('Error.'))
+        .then((response) => (response.data === 'Reset link sent') ? this.$router.push('/recordar-password-fin') : this.setServerMessage(response.data))
+        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.setServerMessage('Datos inválidos.') : this.setServerMessage(error.response.data.message) : this.setServerMessage('Error.'))
     },
 
-    ...mapMutations({
-      updateServerMessage: 'serverMessage/updateServerMessage',
+    ...mapActions({
+      setServerMessage: 'serverMessage/setServerMessage',
     }),
   }
 }

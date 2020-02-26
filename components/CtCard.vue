@@ -11,7 +11,8 @@
 
       <slot name="rightTitleContent" />
     </v-toolbar>
-    <v-container>
+    <slot v-if="fluid" />
+    <v-container v-else>
       <slot />
     </v-container>
   </v-card>
@@ -38,6 +39,10 @@ export default {
       default: '',
     },
     'withoutShaped': {
+      type: Boolean,
+      default: false,
+    },
+    'fluid': {
       type: Boolean,
       default: false,
     },

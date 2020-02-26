@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   data(){
@@ -48,11 +48,11 @@ export default {
   methods: {
     signUp(){
       this.$axios.post('/api/register', this.signUpData)
-        .then((response) => (response.data === 'User registered') ? this.$router.push({ path: '/' }) : this.updateServerMessage(response.data))
+        .then((response) => (response.data === 'User registered') ? this.$router.push({ path: '/' }) : this.setServerMessage(response.data))
     },
 
-    ...mapMutations({
-      updateServerMessage: 'serverMessage/updateServerMessage',
+    ...mapActions({
+      setServerMessage: 'serverMessage/setServerMessage',
     }),
   }
 }
