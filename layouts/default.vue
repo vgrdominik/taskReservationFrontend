@@ -25,7 +25,7 @@
             append-icon=""
           >
             <template v-slot:activator>
-              <v-list-item-content>
+              <v-list-item-content @click="$router.push({ path: item.path })">
                 <v-list-item-title class="primary--text">
                   {{ item.text }}
                 </v-list-item-title>
@@ -36,10 +36,10 @@
               :key="i"
               link
             >
-              <v-list-item-action v-if="child.icon">
+              <v-list-item-action v-if="child.icon" @click="$router.push({ path: child.path })">
                 <CtIcon :icon="child.icon" class="primary--text" />
               </v-list-item-action>
-              <v-list-item-content>
+              <v-list-item-content @click="$router.push({ path: child.path })">
                 <v-list-item-title class="primary--text">
                   {{ child.text }}
                 </v-list-item-title>
@@ -51,10 +51,10 @@
             :key="item.text"
             link
           >
-            <v-list-item-action>
+            <v-list-item-action @click="$router.push({ path: item.path })">
               <CtIcon :icon="item.icon" class="primary--text" />
             </v-list-item-action>
-            <v-list-item-content>
+            <v-list-item-content @click="$router.push({ path: item.path })">
               <v-list-item-title class="primary--text">
                 {{ item.text }}
               </v-list-item-title>
@@ -85,13 +85,20 @@
         Sobre mi
       </CtBtn>
       |
-      <CtBtn type="text" color="white" to="/login">
-        Login
-      </CtBtn>
-      |
-      <CtBtn type="text" color="white" to="/registro">
-        Registro gratuito
-      </CtBtn>
+      <template v-if="user">
+        <CtBtn type="text" color="white" @click="logout()">
+          Salir
+        </CtBtn>
+      </template>
+      <template v-else>
+        <CtBtn type="text" color="white" to="/login">
+          Login
+        </CtBtn>
+        |
+        <CtBtn type="text" color="white" to="/registro">
+          Registro gratuito
+        </CtBtn>
+      </template>
       <CtBtn type="icon" :icon="['fas', 'bell']" />
     </v-app-bar>
     <v-content>
@@ -124,44 +131,73 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      source: String,
+import { mapMutations, mapActions } from 'vuex'
+
+export default {
+  props: {
+    source: String,
+  },
+
+  data: () => ({
+    dialog: false,
+    drawer: null,
+    items: [
+      { icon: ['fas', 'calendar-alt'], text: 'Reservas', path: '/reservas' },
+    ],
+    footerItems: [
+      {
+        href: 'https://www.facebook.com/iamvalentigamez',
+        icon: ['fab', 'facebook'],
+        title: 'Página de Facebook',
+      },
+      {
+        href: 'https://twitter.com/iamvalentigamez',
+        icon: ['fab', 'twitter'],
+        title: 'Pperfil de Twitter',
+      },
+      {
+        href: 'https://www.instagram.com/iamvalentigamez/',
+        icon: ['fab', 'instagram'],
+        title: 'Perfil de Instagram',
+      },
+      {
+        href: 'https://www.linkedin.com/in/valent%C3%AD-g%C3%A0mez-rojas-5919b073/',
+        icon: ['fab', 'linkedin'],
+        title: 'Perfil laboral en Linkedin',
+      },
+      {
+        href: 'https://www.youtube.com/vgrdominik',
+        icon: ['fab', 'youtube'],
+        title: 'Canal de programación',
+      },
+    ],
+  }),
+
+  computed: {
+    user () {
+      return this.$store.state.user.user
+    }
+  },
+
+  methods: {
+    afterLogout(){
+      this.setToken('')
+      this.removeUser()
+      setTimeout(() => this.$router.push({ path: '/' }), 2000)
     },
 
-    data: () => ({
-      dialog: false,
-      drawer: null,
-      items: [
-        { icon: ['fas', 'calendar-alt'], text: 'Reservas' },
-      ],
-      footerItems: [
-        {
-          href: 'https://www.facebook.com/iamvalentigamez',
-          icon: ['fab', 'facebook'],
-          title: 'Página de Facebook',
-        },
-        {
-          href: 'https://twitter.com/iamvalentigamez',
-          icon: ['fab', 'twitter'],
-          title: 'Pperfil de Twitter',
-        },
-        {
-          href: 'https://www.instagram.com/iamvalentigamez/',
-          icon: ['fab', 'instagram'],
-          title: 'Perfil de Instagram',
-        },
-        {
-          href: 'https://www.linkedin.com/in/valent%C3%AD-g%C3%A0mez-rojas-5919b073/',
-          icon: ['fab', 'linkedin'],
-          title: 'Perfil laboral en Linkedin',
-        },
-        {
-          href: 'https://www.youtube.com/vgrdominik',
-          icon: ['fab', 'youtube'],
-          title: 'Canal de programación',
-        },
-      ],
+    logout () {
+      this.$axios.post('/api/logout')
+        .then(() => this.afterLogout())
+    },
+
+    ...mapActions({
+      setToken: 'user/setToken',
     }),
-  }
+
+    ...mapMutations({
+      removeUser: 'user/removeUser',
+    }),
+  },
+}
 </script>

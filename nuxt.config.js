@@ -85,7 +85,7 @@ export default {
   */
   axios: {
     baseURL:  'http://127.0.0.1:8000/',//'{BASE_URL_OF API}/',
-    withCredentials: true
+    credentials: true
   },
 
   /*

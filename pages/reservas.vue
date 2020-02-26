@@ -14,6 +14,7 @@
 import { mapMutations } from 'vuex'
 
 export default {
+  middleware: 'authenticated',
 
   computed: {
     serverMessage () {
@@ -25,7 +26,7 @@ export default {
   },
 
   mounted() {
-    (this.token()) ? this.fetch() : this.$router.push('/login')
+    this.fetch()
   },
 
   methods: {

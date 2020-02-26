@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   data(){
@@ -53,8 +53,9 @@ export default {
 
   methods: {
     afterLogin(response){
-      this.updateToken(response.data.token)
-      this.$router.push('/reservas')
+      this.setToken(response.data.token)
+      this.fetchUser()
+      this.$router.push('/sala-de-espera')
     },
 
     login(){
@@ -63,9 +64,13 @@ export default {
         .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.updateServerMessage('Datos inválidos.') : this.updateServerMessage(error.response.data.message) : this.updateServerMessage('Error.'))
     },
 
+    ...mapActions({
+      setToken: 'user/setToken',
+      fetchUser: 'user/fetchUser',
+    }),
+
     ...mapMutations({
       updateServerMessage: 'serverMessage/updateServerMessage',
-      updateToken: 'user/updateToken',
     }),
   }
 }
