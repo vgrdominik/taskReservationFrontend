@@ -52,10 +52,15 @@ export default {
   },
 
   methods: {
+    afterLogin(response){
+      this.updateToken(response.data.token)
+      this.$router.push('/reservas')
+    },
+
     login(){
       this.$axios.post('/api/login', this.signInData)
-        .then((response) => (response.data.token) ? this.updateToken(response.data.token) : this.updateServerMessage(response.data))
-        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.updateServerMessage('Datos inválidos.') : this.updateServerMessage(error.response.data.message) : '')
+        .then((response) => (response.data.token) ? this.afterLogin(response) : this.updateServerMessage(response.data))
+        .catch((error) => (error.response.data.message) ? (error.response.data.message === 'The given data was invalid.') ? this.updateServerMessage('Datos inválidos.') : this.updateServerMessage(error.response.data.message) : this.updateServerMessage('Error.'))
     },
 
     ...mapMutations({
