@@ -212,9 +212,6 @@ export default {
     getEventColor (event) {
       return event.color
     },
-    rnd (a, b) {
-      return Math.floor((b - a + 1) * Math.random()) + a
-    },
     nth (d) {
       return d > 3 && d < 21
         ? 'th'

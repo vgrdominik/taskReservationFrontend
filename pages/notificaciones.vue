@@ -1,7 +1,15 @@
 <template>
   <CtCard title="Notificaciones" width="500" class="mx-auto">
     <v-row dense>
-      <v-col cols="12" class="mt-5" v-for="event in events" :key="event.id" v-html="event.description" />
+      <v-col cols="12" class="mt-5" v-for="calendarEvent in events" :key="calendarEvent.id">
+        <v-card color="primary" dark>
+          <v-card-title class="headline" v-html="calendarEvent.description" />
+          <v-card-subtitle v-html="(new Date(calendarEvent.reservated_at)).toString()" />
+          <v-container>
+            <span v-html="calendarEvent.details" />
+          </v-container>
+        </v-card>
+      </v-col>
     </v-row>
   </CtCard>
 </template>
