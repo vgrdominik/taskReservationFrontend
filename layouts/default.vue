@@ -123,6 +123,7 @@
         <v-divider></v-divider>
 
         <v-card-text class="white--text">
+          <CtBtn type="text" href="https://www.ciclotic.com/sobre-ciclotic.php#condiciones" target="_blank" color="white">Condiciones</CtBtn>
           <CtBtn type="text" href="https://valentigamez.com" target="_blank" color="white">{{ new Date().getFullYear() }} — Valentí Gàmez</CtBtn>
         </v-card-text>
       </CtCard>
