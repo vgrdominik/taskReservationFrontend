@@ -21,6 +21,9 @@
         Tiempo desde primera reunión hasta entrega: 1 semana
       </v-col>
       <v-col cols="12" class="body-2 px-5">
+        Coste reunión 1 hora: 45€ + IVA
+      </v-col>
+      <v-col cols="12" class="body-2 px-5">
         Coste orientativo total: 1960€ + IVA
       </v-col>
       <CtBtn color="primary" to="/registro" class="mt-4 mx-auto">
