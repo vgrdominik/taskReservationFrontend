@@ -6,6 +6,10 @@ Frontend para reservar tareas.
 
 https://valentigamez.com
 
+## Proyecto relacionado
+
+Api: https://github.com/vgrdominik/taskReservationApi
+
 ## Instalación
 
 Instalación:
