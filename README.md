@@ -2,11 +2,35 @@
 
 Frontend para reservar tareas.
 
-## Sobre mi
+## Sobre el líder del proyecto
 
 https://valentigamez.com
 
+## Instalación
+
+Instalación:
+
+``` bash
+# Instalar dependencias
+$ npm run install
+
+# Simular un servidor en localhost:3000 con carga automática
+$ npm run dev
+
+# Construir la carpeta dist. Ésta carpeta se puede subir en el servidor directamente.
+$ npm run build
+
+# Generar el proyecto de forma estática.
+$ npm run generate
+```
+
 ## Aprendiendo sobre Task Reservation
+
+El proyecto está hecho con NUXTJS, VUE y VUETIFY principalmente. Se puede consultar más información de las tecnologías en los siguientes enlaces:
+
+* Vue: https://vuejs.org/ Framework de javascript.
+* NUXTJS: https://nuxtjs.org/ Framework ensamblador de aplicativos web.
+* VUETIFY: https://vuetifyjs.com/en/ Librería de UI, UX y estilos basada en Material.
 
 Se puede encontrar toda la documentación en el siguiente enlace: https://github.com/vgrdominik/taskReservationDocumentation
 
@@ -16,45 +40,16 @@ Se puede encontrar toda la documentación en el siguiente enlace: https://github
 
 ## Contribución
 
-No se contempla la contribución de forma comunitaria en este repositorio. Aún así puedes disponer del código y comentar en iam@valentigamez.com. Lo que consideres serà muy agradecido.
+Se puede realizar un pull request si se desea contribuir en el proyecto. Aún no hay código de conducta ya que se considera contraproducente en este proyecto.
+
+Se puede disponer del código y comentar en iam@valentigamez.com. Lo que consideres serà muy agradecido.
 
 ## Vulnerabilidades de seguridad
 
-Si descubres algún fallo de seguridad lo puedes enviar a iam@valintigamez.com con el asunto "Vulnerabilidad taskReservationFrontend". Valentí Gàmez, el líder del proyecto se compromete a responder y tratar cualquier situación constructiva.
+Si se descubre algún fallo de seguridad se puede enviar a iam@valintigamez.com con el asunto "Vulnerabilidad taskReservationFrontend". Valentí Gàmez, el líder del proyecto se compromete a responder y tratar cualquier situación constructiva.
 
 ## Licencia
 
 TaskReservationFrontend es un software open source bajo la licencia [MIT license](https://opensource.org/licenses/MIT).
 
 NOTA: No existe versión enterprise. 
-
-**************************************************************************
-**************************************************************************
-Lo que sigue es el README del repositorio del cual parte el aplicativo.
-**************************************************************************
-**************************************************************************
-
-Here's how I got Laravel Airlock working with NuxtJS and the native Authentication module: [https://serversideup.net/using-laravel-airlock-with-nuxtjs/](https://serversideup.net/using-laravel-airlock-with-nuxtjs/)
-
-# AirlockNuxt
-
-> Testing Laravel Airlock with Nuxt
-
-## Build Setup
-
-``` bash
-# install dependencies
-$ npm run install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
