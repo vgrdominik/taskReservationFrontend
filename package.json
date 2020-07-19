@@ -17,7 +17,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.3.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0"
   },
